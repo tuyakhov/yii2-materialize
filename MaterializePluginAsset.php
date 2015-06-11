@@ -15,6 +15,6 @@ class MaterializePluginAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\JqueryAsset',
-        'tuyakhov\materialize\Materialize'
+        'tuyakhov\materialize\MaterializeAsset'
     ];
 }

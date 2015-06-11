@@ -71,7 +71,7 @@ class ActiveField extends \yii\widgets\ActiveField
             }
             Html::addCssClass($options, $icon);
         }
-        $this->parts['{icon}'] = Html::tag('i', '', $this->iconOptions);
+        $this->parts['{icon}'] = Html::tag('i', '', $options);
 
         return $this;
     }
