@@ -78,7 +78,12 @@ class Nav extends Widget
             $this->params = Yii::$app->request->getQueryParams();
         }
         if ($this->dropDownCaret === null) {
-            $this->dropDownCaret = Html::tag('i', '', ['class' => 'mdi-navigation-arrow-drop-down right']);
+            $this->dropDownCaret = Icon::widget([
+                'name' => 'navigation-arrow-drop-down',
+                'options' => [
+                    'class' => 'right'
+                ]
+            ]);
         }
         Html::addCssClass($this->options, 'hide-on-med-and-down');
     }
