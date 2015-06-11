@@ -11,11 +11,6 @@ use yii\helpers\Json;
 trait WidgetTrait
 {
     /**
-     * @var array the HTML attributes for the widget container tag.
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     */
-    public $options = [];
-    /**
      * @var array the options for the underlying Materialize JS plugin.
      */
     public $clientOptions = [];
