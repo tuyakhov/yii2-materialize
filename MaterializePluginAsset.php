@@ -9,9 +9,9 @@ use yii\web\AssetBundle;
 
 class MaterializePluginAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/materialize';
+    public $sourcePath = '@bower/materialize/dist';
     public $js = [
-        YII_DEBUG ? 'js/materialize.js' : 'js/materialize.min.js',
+        'js/materialize.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset',

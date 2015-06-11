@@ -9,8 +9,8 @@ use yii\web\AssetBundle;
 
 class MaterializeAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/materialize';
+    public $sourcePath = '@bower/materialize/dist';
     public $css = [
-        YII_DEBUG ? 'css/materialize.css' : 'js/materialize.min.css',
+        'css/materialize.css',
     ];
 }
