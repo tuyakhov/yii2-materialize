@@ -30,7 +30,14 @@ class Button extends Widget
      * @var string|null optional wave effect form, default to ripple
      */
     public $waveFrom;
-
+    /**
+     * @var string|null
+     */
+    public $iconName;
+    /**
+     * @var string|null name-value pairs that will be used to initialize the Icon properties
+     */
+    public $iconConfig;
 
     /**
      * Initializes the widget.
@@ -49,6 +56,12 @@ class Button extends Widget
      */
     public function run()
     {
-        return Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
+        $content = '';
+        if ($this->iconName !== null) {
+            $this->iconConfig['name'] = $this->iconName;
+            $content .= Icon::widget($this->iconConfig);
+        }
+        $content .= $this->encodeLabel ? Html::encode($this->label) : $this->label;
+        return Html::tag($this->tagName, $content, $this->options);
     }
 }

@@ -31,7 +31,6 @@ class NavBar extends Widget
     public $containerOptions = [];
     /**
      * @var string|boolean the text of the brand of false if it's not used. Note that this is not HTML-encoded.
-     * @see http://getbootstrap.com/components/#navbar
      */
     public $brandLabel = false;
     /**
