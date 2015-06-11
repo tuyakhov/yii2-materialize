@@ -20,6 +20,7 @@ class Nav extends Widget
      * - url: optional, the item's URL. Defaults to "#".
      * - visible: boolean, optional, whether this menu item is visible. Defaults to true.
      * - linkOptions: array, optional, the HTML attributes of the item's link.
+     * - dropDownOptions: array, optional, the HTML attributes of the [[Dropdown]] widget.
      * - options: array, optional, the HTML attributes of the item container (LI).
      * - active: boolean, optional, whether the item should be on active state or not.
      * - items: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
@@ -101,6 +102,9 @@ class Nav extends Widget
             if (isset($item['visible']) && !$item['visible']) {
                 continue;
             }
+            if (!isset($item['id'])) {
+                $item['id'] = $this->getId() . "-item-$i";
+            }
             $items[] = $this->renderItem($item);
         }
 
@@ -126,6 +130,7 @@ class Nav extends Widget
         $options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');
+        $dropDownOptions = ArrayHelper::getValue($item, 'dropDownOptions', []);
         $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
 
         if (isset($item['active'])) {
@@ -135,7 +140,7 @@ class Nav extends Widget
         }
 
         if ($items !== null) {
-            $linkOptions['data-activates'] = 'dropdown';
+            $linkOptions['data-activates'] = $dropDownOptions['id'] = $item['id'] . '-dropdown';
             Html::addCssClass($linkOptions, 'dropdown-button');
             if ($this->dropDownCaret !== '') {
                 $label .= ' ' . $this->dropDownCaret;
@@ -144,7 +149,7 @@ class Nav extends Widget
                 if ($this->activateItems) {
                     $items = $this->isChildActive($items, $active);
                 }
-                $items = $this->renderDropdown($items, $item);
+                $items = $this->renderDropdown($items, $item, $dropDownOptions);
             }
         }
 
@@ -160,14 +165,15 @@ class Nav extends Widget
      * This method is called to create sub-menus.
      * @param array $items the given items. Please refer to [[Dropdown::items]] for the array structure.
      * @param array $parentItem the parent item information. Please refer to [[items]] for the structure of this array.
+     * @param array $options optional, the HTML attributes of the [[Dropdown]] widget.
      * @return string the rendering result.
-     * @since 2.0.1
      */
-    protected function renderDropdown($items, $parentItem)
+    protected function renderDropdown($items, $parentItem, $options = [])
     {
         return Dropdown::widget([
             'items' => $items,
             'encodeLabels' => $this->encodeLabels,
+            'options' => $options,
             'clientOptions' => false,
             'view' => $this->getView(),
         ]);

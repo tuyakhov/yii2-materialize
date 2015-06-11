@@ -61,18 +61,15 @@ class NavBar extends Widget
         $tag = ArrayHelper::remove($options, 'tag', 'nav');
         echo Html::beginTag($tag, $options);
 
-        if (!isset($this->containerOptions['id'])) {
-            $this->containerOptions['id'] = "{$this->options['id']}";
-        }
-        if ($this->brandLabel !== false) {
-            Html::addCssClass($this->brandOptions, 'navbar-brand');
-            echo Html::a($this->brandLabel, $this->brandUrl === false ? \Yii::$app->homeUrl : $this->brandUrl, $this->brandOptions);
-        }
-
         Html::addCssClass($this->containerOptions, 'nav-wrapper');
         $options = $this->containerOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'div');
         echo Html::beginTag($tag, $options);
+
+        if ($this->brandLabel !== false) {
+            Html::addCssClass($this->brandOptions, 'navbar-brand');
+            echo Html::a($this->brandLabel, $this->brandUrl === false ? \Yii::$app->homeUrl : $this->brandUrl, $this->brandOptions);
+        }
     }
 
     /**

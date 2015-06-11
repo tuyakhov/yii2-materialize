@@ -8,7 +8,7 @@ namespace tuyakhov\materialize;
 
 class Widget extends \yii\base\Widget
 {
-    use WidgetTrait
+    use WidgetTrait;
 
     public $options = [];
 
