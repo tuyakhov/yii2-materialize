@@ -55,8 +55,6 @@ class NavBar extends Widget
         parent::init();
         $this->clientOptions = false;
 
-        Html::addCssClass($this->brandOptions, 'navbar-logo');
-
         $options = $this->options;
         $tag = ArrayHelper::remove($options, 'tag', 'nav');
         echo Html::beginTag($tag, $options);
@@ -67,7 +65,7 @@ class NavBar extends Widget
         echo Html::beginTag($tag, $options);
 
         if ($this->brandLabel !== false) {
-            Html::addCssClass($this->brandOptions, 'navbar-brand');
+            Html::addCssClass($this->brandOptions, 'brand-logo');
             echo Html::a($this->brandLabel, $this->brandUrl === false ? \Yii::$app->homeUrl : $this->brandUrl, $this->brandOptions);
         }
     }
