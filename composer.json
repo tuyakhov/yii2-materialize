@@ -1,21 +1,40 @@
 {
-    "name": "tuyakhov/yii2-materialize",
-    "description": "This is the Materialize extension for Yii framework 2.0. It encapsulates Materialize components and plugins in terms of Yii widgets, and thus makes using Materialize components/plugins in Yii applications extremely easy.",
-    "type": "yii2-extension",
-    "keywords": ["yii2","extension","materialize","material design"," materializecss"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Anton Tuyakhov",
-            "email": "atuyakhov@gmail.com"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "tuyakhov\\materialize\\": ""
-        }
+  "name": "tuyakhov/yii2-materialize",
+  "description": "This is the Materialize extension for Yii framework 2.0. It encapsulates Materialize components and plugins in terms of Yii widgets, and thus makes using Materialize components/plugins in Yii applications extremely easy.",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "extension",
+    "materialize",
+    "material design",
+    "materializecss"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anton Tuyakhov",
+      "email": "atuyakhov@gmail.com"
     }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+    "bower-asset/materialize": "0.96.*"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/tuyakhov/yii2-materialize.git"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "tuyakhov\\materialize\\": ""
+    }
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
+  }
 }
