@@ -15,6 +15,11 @@ class Button extends Widget
      */
     public $tagName = 'button';
     /**
+     * @var bool button css class type
+     * @see http://materializecss.com/buttons.html#flat
+     */
+    public $flat = false;
+    /**
      * @var string the button label
      */
     public $label = 'Button';
@@ -47,7 +52,7 @@ class Button extends Widget
     {
         parent::init();
         $this->clientOptions = false;
-        Html::addCssClass($this->options, 'btn');
+        Html::addCssClass($this->options, $this->flat ? 'btn-flat' : 'btn');
         Waves::addWaveEffect($this->options, $this->waveColor, $this->waveFrom);
     }
 
