@@ -85,7 +85,6 @@ class Nav extends Widget
                 ]
             ]);
         }
-        Html::addCssClass($this->options, 'hide-on-med-and-down');
     }
 
     /**
