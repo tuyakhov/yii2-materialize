@@ -168,7 +168,7 @@ class Modal extends Widget
         if ($this->toggleButton !== false) {
             Html::addCssClass($this->toggleButton, 'modal-trigger');
             if (!isset($this->toggleButton['data-target']) && !isset($this->toggleButton['href'])) {
-                $this->toggleButton['data-target'] = '#' . $this->options['id'];
+                $this->toggleButton['data-target'] = $this->options['id'];
             }
         }
     }
