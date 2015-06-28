@@ -35,7 +35,7 @@ trait WidgetTrait
      * Registers a specific Materialize plugin and the related events
      * @param string $name the name of the Materialize plugin
      */
-    protected function registerPlugin($name)
+    protected function registerJqueryPlugin($name)
     {
         $view = $this->getView();
 
@@ -50,6 +50,19 @@ trait WidgetTrait
         }
 
         $this->registerClientEvents();
+    }
+
+    protected function registerPlugin($name)
+    {
+        $view = $this->getView();
+
+        MaterializePluginAsset::register($view);
+
+        if ($this->clientOptions !== false && is_array($this->clientOptions)) {
+            $options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
+            $js = "Materialize.$name.apply(null, $options);";
+            $view->registerJs($js);
+        }
     }
 
     /**

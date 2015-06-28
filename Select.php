@@ -17,7 +17,7 @@ class Select extends InputWidget
 
     public function run()
     {
-        $this->registerPlugin('material_select');
+        $this->registerJqueryPlugin('material_select');
         if ($this->hasModel()) {
             return Html::activeDropDownList($this->model, $this->attribute, $this->items, $this->options);
         } else {
