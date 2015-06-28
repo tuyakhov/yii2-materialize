@@ -33,25 +33,31 @@ trait WidgetTrait
 
     /**
      * Registers a specific Materialize plugin and the related events
-     * @param string $name the name of the Materialize plugin
+     * @param string $name the name of the Materialize Jquery plugin
+     * @param string $selector the Jquery selector of the Materialize Jquery plugin
      */
-    protected function registerJqueryPlugin($name)
+    protected function registerJqueryPlugin($name, $selector = null)
     {
         $view = $this->getView();
 
         MaterializePluginAsset::register($view);
 
-        $id = $this->options['id'];
+        if ($selector === null) {
+            $selector = '#' . $this->options['id'];
+        }
 
         if ($this->clientOptions !== false) {
             $options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
-            $js = "jQuery('#$id').$name($options);";
+            $js = "jQuery('$selector').$name($options);";
             $view->registerJs($js);
         }
 
         $this->registerClientEvents();
     }
 
+    /**
+     * @param string $name the name of the Materialize plugin
+     */
     protected function registerPlugin($name)
     {
         $view = $this->getView();
