@@ -18,7 +18,7 @@
   ],
   "require": {
     "yiisoft/yii2": "*",
-    "bower-asset/materialize": "0.96.*"
+    "bower-asset/materialize": "0.97.*"
   },
   "repositories": [
     {
