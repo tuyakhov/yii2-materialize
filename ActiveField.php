@@ -10,7 +10,7 @@ use yii\helpers\Html;
 
 class ActiveField extends \yii\widgets\ActiveField
 {
-    public $template = "{icon}\n{input}\n{label}\n{hint}\n{error}";
+    public $template = "{icon}\n{input}\n{label}\n{hint}";
 
     public $options = ['class' => 'input-field'];
 

@@ -12,5 +12,10 @@ class MaterializeAsset extends AssetBundle
     public $sourcePath = '@bower/materialize/dist';
     public $css = [
         'css/materialize.css',
+        'http://fonts.googleapis.com/icon?family=Material+Icons'
+    ];
+
+    public $depends = [
+        'tuyakhov\materialize\YiiMaterializeAsset'
     ];
 }
