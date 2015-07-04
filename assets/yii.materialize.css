@@ -69,6 +69,6 @@
     box-shadow: 0 1px 0 0 #4CAF50;
 }
 
-.has-success .help-block {
+.has-success .help-block, .has-error .material-icons {
     color: #4CAF50;
 }
