@@ -7,7 +7,7 @@
     transition: .2s opacity ease-out, .2s color ease-out;
 }
 
-.has-error .help-block {
+.has-error .help-block, .has-error .material-icons {
     color: #F44336;
 }
 
