@@ -16,7 +16,7 @@ class ActiveField extends \yii\widgets\ActiveField
 
     public $inputOptions = ['class' => 'validate'];
 
-    public $iconOptions = ['class' => 'material-icons prefix'];
+    public $iconOptions = ['class' => 'prefix'];
 
     public $radioGapCssClass = 'with-gap';
 
@@ -63,7 +63,7 @@ class ActiveField extends \yii\widgets\ActiveField
         }
 
         $options = array_merge($this->iconOptions, $options);
-        $this->parts['{icon}'] = Html::tag('i', $icon, $options);
+        $this->parts['{icon}'] = Icon::widget(['name' => $icon, 'options' => $options]);
 
         return $this;
     }

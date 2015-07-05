@@ -8,12 +8,17 @@ namespace tuyakhov\materialize;
 
 use yii\helpers\Html;
 
+/**
+ * Class Icon
+ * @package tuyakhov\materialize
+ * @see http://materializecss.com/icons.html
+ */
 class Icon extends Widget
 {
     /**
-     * @var string prefix for icon name
+     * @var string size of the icon (tiny, small, medium, large)
      */
-    public $iconPrefix = 'mdi-';
+    public $size = '';
     /**
      * @var string the tag to use to render the icon
      */
@@ -22,6 +27,7 @@ class Icon extends Widget
      * @var string the icon name
      */
     public $name;
+
     /**
      * Initializes the widget.
      * If you override this method, make sure you call the parent implementation first.
@@ -30,13 +36,15 @@ class Icon extends Widget
     {
         parent::init();
         $this->clientOptions = false;
-        Html::addCssClass($this->options, $this->iconPrefix . $this->name);
+        Html::addCssClass($this->options, $this->size);
+        Html::addCssClass($this->options, 'material-icons');
     }
+
     /**
      * Renders the widget.
      */
     public function run()
     {
-        return Html::tag($this->tagName, '', $this->options);
+        return Html::tag($this->tagName, $this->name, $this->options);
     }
 }
