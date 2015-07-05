@@ -25,6 +25,7 @@ class Icon extends Widget
     public $tagName = 'i';
     /**
      * @var string the icon name
+     * @see https://www.google.com/design/icons/
      */
     public $name;
 
@@ -36,6 +37,7 @@ class Icon extends Widget
     {
         parent::init();
         $this->clientOptions = false;
+        MaterializeIconsAsset::register($this->getView());
         Html::addCssClass($this->options, $this->size);
         Html::addCssClass($this->options, 'material-icons');
     }
