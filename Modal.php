@@ -84,8 +84,8 @@ class Modal extends Widget
      */
     public function run()
     {
-        echo "\n" . $this->renderFooter();
         echo "\n" . Html::endTag('div'); // modal-content
+        echo "\n" . $this->renderFooter();
         echo "\n" . Html::endTag('div');
 
         $this->registerJqueryPlugin('leanModal', "[data-target={$this->options['id']}], [href={$this->options['id']}]");
