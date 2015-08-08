@@ -136,16 +136,10 @@ class ActiveField extends \yii\widgets\ActiveField
 
     public function checkboxList($items, $options = [])
     {
-        $itemOptions = isset($options['itemOptions']) ? $options['itemOptions'] : [];
-        $options['item'] = function ($index, $label, $name, $checked, $value) use ($itemOptions) {
-            $inputId = Html::getInputId($this->model, $this->attribute) . '_' . $index;
-            return Html::checkbox($name, $checked, array_merge($itemOptions, [
-                'id' => $inputId,
-                'value' => $value,
-            ])) . Html::label($label, $inputId);
-        };
         $this->parts['{label}'] = '';
-        return parent::checkboxList($items, $options);
+        $this->parts['{input}'] = \tuyakhov\materialize\Html::activeCheckboxList($this->model, $this->attribute, $items, $options);
+
+        return $this;
     }
 
     protected function addListInputCssClass(&$options, $class)
