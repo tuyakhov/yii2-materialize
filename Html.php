@@ -30,4 +30,24 @@ class Html extends BaseHtml
         return $content;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public static function radio($name, $checked = false, $options = [])
+    {
+        if (!isset($options['id'])) {
+            $options['id'] = Widget::$autoIdPrefix . Widget::$counter++;
+        }
+        $content = parent::radio($name, $checked, array_merge($options, ['label' => null]));
+        if (isset($options['label'])) {
+            $label = $options['label'];
+            $for = $options['id'];
+            $labelOptions = isset($options['labelOptions']) ? $options['labelOptions'] : [];
+            unset($options['label'], $options['labelOptions']);
+            $content .= parent::label($label, $for, $labelOptions);
+        }
+        return $content;
+    }
+
+
 }

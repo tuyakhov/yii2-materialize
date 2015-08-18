@@ -10,18 +10,39 @@ use yii\helpers\Html;
 
 class ActiveField extends \yii\widgets\ActiveField
 {
+    /**
+     * @inheritdoc
+     */
     public $template = "{icon}\n{input}\n{label}\n{hint}\n{error}";
 
+    /**
+     * @inheritdoc
+     */
     public $options = ['class' => 'input-field'];
 
+    /**
+     * @inheritdoc
+     */
     public $inputOptions = ['class' => 'validate'];
 
+    /**
+     * @var array
+     */
     public $iconOptions = ['class' => 'prefix'];
 
+    /**
+     * @var string
+     */
     public $radioGapCssClass = 'with-gap';
 
+    /**
+     * @var string
+     */
     public $checkboxFilledCssClass = 'filled-in';
 
+    /**
+     * @inheritdoc
+     */
     public $labelOptions = [];
 
     /**
@@ -68,18 +89,31 @@ class ActiveField extends \yii\widgets\ActiveField
         return $this;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function textarea($options = [])
     {
         Html::addCssClass($options, 'materialize-textarea');
         return parent::textarea($options);
     }
 
+    /**
+     * Renders default browser drop-down list
+     * @see http://materializecss.com/forms.html#select
+     * @param $items
+     * @param array $options
+     * @return $this
+     */
     public function dropDownListDefault($items, $options = [])
     {
         Html::addCssClass($options, 'browser-default');
         return parent::dropDownList($items, $options);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function dropDownList($items, $options = [])
     {
         return $this->widget(Select::className(), [
@@ -88,18 +122,38 @@ class ActiveField extends \yii\widgets\ActiveField
         ]);
     }
 
+    /**
+     * Creates radio button with gap
+     * @see http://materializecss.com/forms.html#radio
+     * @param array $options
+     * @param bool|true $enclosedByLabel
+     * @return $this
+     */
     public function radioWithGap($options = [], $enclosedByLabel = true)
     {
         Html::addCssClass($options, $this->radioGapCssClass);
-        return parent::radio($options, $enclosedByLabel);
+        return self::radio($options, $enclosedByLabel);
     }
 
+    /**
+     * Renders a list of radio buttons with gap
+     * @param $items
+     * @param array $options
+     * @return $this|ActiveField
+     */
     public function radioListWithGap($items, $options = [])
     {
         $this->addListInputCssClass($options, $this->radioGapCssClass);
-        return parent::radioList($items, $options);
+        return self::radioList($items, $options);
     }
 
+    /**
+     * Renders filled in checkbox
+     * @see http://materializecss.com/forms.html#checkbox
+     * @param array $options
+     * @param bool|true $enclosedByLabel
+     * @return $this
+     */
     public function checkboxFilled($options = [], $enclosedByLabel = true)
     {
         Html::addCssClass($options, $this->checkboxFilledCssClass);
@@ -107,6 +161,8 @@ class ActiveField extends \yii\widgets\ActiveField
     }
 
     /**
+     * Renders switcher
+     * @see http://materializecss.com/forms.html#switches
      * @param array $options
      * @param array $flags
      * @return $this
@@ -128,12 +184,21 @@ class ActiveField extends \yii\widgets\ActiveField
         return $this;
     }
 
+    /**
+     * Renders a list of filled checkboxes
+     * @param $items
+     * @param array $options
+     * @return $this|ActiveField
+     */
     public function checkboxListFilled($items, $options = [])
     {
         $this->addListInputCssClass($options, $this->checkboxFilledCssClass);
         return self::checkboxList($items, $options);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function checkboxList($items, $options = [])
     {
         $this->parts['{label}'] = '';
@@ -141,6 +206,18 @@ class ActiveField extends \yii\widgets\ActiveField
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function radioList($items, $options = [])
+    {
+        $this->parts['{label}'] = '';
+        $this->parts['{input}'] = \tuyakhov\materialize\Html::activeRadioList($this->model, $this->attribute, $items, $options);
+
+        return $this;
+    }
+
 
     protected function addListInputCssClass(&$options, $class)
     {
