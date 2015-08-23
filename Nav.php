@@ -158,7 +158,7 @@ class Nav extends Widget
         }
 
         if ($this->activateItems && $active) {
-            Html::addCssClass($options, 'active');
+            Html::addCssClass($linkOptions, 'active');
         }
 
         return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
