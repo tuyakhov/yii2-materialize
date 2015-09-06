@@ -202,6 +202,9 @@ class ActiveField extends \yii\widgets\ActiveField
     public function checkboxList($items, $options = [])
     {
         $this->parts['{label}'] = '';
+        if (!isset($options['separator'])) {
+            $options['separator'] = Html::tag('br');
+        }
         $this->parts['{input}'] = \tuyakhov\materialize\Html::activeCheckboxList($this->model, $this->attribute, $items, $options);
 
         return $this;
@@ -213,6 +216,9 @@ class ActiveField extends \yii\widgets\ActiveField
     public function radioList($items, $options = [])
     {
         $this->parts['{label}'] = '';
+        if (!isset($options['separator'])) {
+            $options['separator'] = Html::tag('br');
+        }
         $this->parts['{input}'] = \tuyakhov\materialize\Html::activeRadioList($this->model, $this->attribute, $items, $options);
 
         return $this;
