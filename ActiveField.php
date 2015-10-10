@@ -210,6 +210,13 @@ class ActiveField extends \yii\widgets\ActiveField
         return $this;
     }
 
+    public function datePicker($options)
+    {
+        return $this->widget(DatePicker::className(), [
+            'options' => $options
+        ]);
+    }
+
     /**
      * @inheritDoc
      */

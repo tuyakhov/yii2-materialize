@@ -13,6 +13,6 @@ class YiiMaterializeAsset extends AssetBundle
     public $sourcePath = '@tuyakhov/materialize/assets';
 
     public $css = [
-        'yii.materialize.css'
+        'css/yii.materialize.css'
     ];
 }
