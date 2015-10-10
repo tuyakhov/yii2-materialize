@@ -14,7 +14,10 @@ class DatePicker extends InputWidget
 
     public function run()
     {
-        $this->registerJqueryPlugin('pickdate');
+        if (!isset($this->clientOptions['container'])) {
+            $this->clientOptions['container'] = 'body';
+        }
+        $this->registerJqueryPlugin('pickadate');
         Html::addCssClass($this->options, 'datepicker');
         if ($this->hasModel()) {
             $this->options['data-value'] = isset($this->value) ? $this->value : Html::getAttributeValue($this->model, $this->attribute);
