@@ -58,7 +58,7 @@ class Alert extends Widget
     private function renderHtml($message, $options = [])
     {
         $html = Html::beginTag('div', $options);
-        $html .= '<div class="card">';
+        $html .= '<div class="card-panel">';
         $html .= $message;
         $html .= '</div>';
         $html .= Html::endTag('div');
