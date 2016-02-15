@@ -5,7 +5,7 @@ namespace tuyakhov\materialize;
 use tuyakhov\materialize\Widget;
 use Yii;
 use yii\helpers\Html;
-use common\helpers\ArrayHelper;
+use yii\helpers\ArrayHelper;
 
 class Alert extends Widget
 {
