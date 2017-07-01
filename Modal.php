@@ -88,7 +88,7 @@ class Modal extends Widget
         echo "\n" . $this->renderFooter();
         echo "\n" . Html::endTag('div');
 
-        $this->registerJqueryPlugin('leanModal', "[data-target={$this->options['id']}], [href={$this->options['id']}]");
+        $this->registerJqueryPlugin('modal', ".modal");
     }
 
     /**
